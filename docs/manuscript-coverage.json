@@ -1,0 +1,170 @@
+[
+  {
+    "n": 1,
+    "roman": "I",
+    "paragraphs": 53,
+    "characters": 24668,
+    "sha256": "47a43f1708110c14d4af0d013ca5bd5d4860bb83e4362aba8117c7ae6eb1bf42"
+  },
+  {
+    "n": 2,
+    "roman": "II",
+    "paragraphs": 116,
+    "characters": 27758,
+    "sha256": "83b37b7c6ddb574f07160ab9126946f44645c101865ec09c883b9d7cb49618e5"
+  },
+  {
+    "n": 3,
+    "roman": "III",
+    "paragraphs": 32,
+    "characters": 16898,
+    "sha256": "ee31fb5a54fcb03ef48481d50b8c2673e6a387203588c6d40c68e6b855a4443e"
+  },
+  {
+    "n": 4,
+    "roman": "IV",
+    "paragraphs": 91,
+    "characters": 30084,
+    "sha256": "2e1741e3be185b58238094efab977e73e4954e68850ff0cae1ff2d10cee26fc2"
+  },
+  {
+    "n": 5,
+    "roman": "V",
+    "paragraphs": 51,
+    "characters": 23352,
+    "sha256": "1e0a8a176ef12bb55ecc9694b505992681ac478b4c26b8306a434c8a7dd89de5"
+  },
+  {
+    "n": 6,
+    "roman": "VI",
+    "paragraphs": 88,
+    "characters": 22640,
+    "sha256": "5effcd5f41f6fe6aa61d166348f46ff82526adb0b1c74cfa60e9c53de979fd94"
+  },
+  {
+    "n": 7,
+    "roman": "VII",
+    "paragraphs": 59,
+    "characters": 12479,
+    "sha256": "346d01a4c54c2c98e727c131cc87db4d9742cb63158ff2a48303d6ac39702ec4"
+  },
+  {
+    "n": 8,
+    "roman": "VIII",
+    "paragraphs": 54,
+    "characters": 25167,
+    "sha256": "d7b8509bda17c1bb20cb550dc2fa16b320bd1e9a689812a72736e6fc8537830c"
+  },
+  {
+    "n": 9,
+    "roman": "IX",
+    "paragraphs": 91,
+    "characters": 31761,
+    "sha256": "e456640caeca1d0a0090315a1c7bf7f0854e6893d76e787ca53aa761b0fc7b2f"
+  },
+  {
+    "n": 10,
+    "roman": "X",
+    "paragraphs": 51,
+    "characters": 26844,
+    "sha256": "c1832777403c12d5ad01791948f85bcf8d0b9e00e46b2561501091c403bb366f"
+  },
+  {
+    "n": 11,
+    "roman": "XI",
+    "paragraphs": 69,
+    "characters": 23138,
+    "sha256": "fee5edf1c17aef32b5662ebd87202c2da2e6e160acf2c02f6e8ea9ab2466dd63"
+  },
+  {
+    "n": 12,
+    "roman": "XII",
+    "paragraphs": 121,
+    "characters": 28594,
+    "sha256": "7817f61da5cf35d90b3a370ce4b1aa825f39a15b306bc1fe08f22946c76e21e4"
+  },
+  {
+    "n": 13,
+    "roman": "XIII",
+    "paragraphs": 80,
+    "characters": 24453,
+    "sha256": "64f19ac1ca74a10d96a94c2abeb7baed3305c54777435edd91565508770d85a4"
+  },
+  {
+    "n": 14,
+    "roman": "XIV",
+    "paragraphs": 62,
+    "characters": 32462,
+    "sha256": "27d645ec2242a2995d42cdd79384aab390e2d1622f7db20058b0168c587bb6cb"
+  },
+  {
+    "n": 15,
+    "roman": "XV",
+    "paragraphs": 21,
+    "characters": 16708,
+    "sha256": "8ef5e407fcad457ce1e416e2f75b286094101c0389afb2c767981863cbc67d2e"
+  },
+  {
+    "n": 16,
+    "roman": "XVI",
+    "paragraphs": 99,
+    "characters": 29377,
+    "sha256": "bc40a928a4c2303ec6b7a462dc4e1fd0bcb09c2c8d55f4eb822c26c3b90ad9bd"
+  },
+  {
+    "n": 17,
+    "roman": "XVII",
+    "paragraphs": 41,
+    "characters": 29617,
+    "sha256": "aa6f9b65b21c10347058a46d13616c2abcd3c71a1b8d226a8ff18544b325316f"
+  },
+  {
+    "n": 18,
+    "roman": "XVIII",
+    "paragraphs": 22,
+    "characters": 15929,
+    "sha256": "6394cb269456f8ce1c8339f9cc37b61d1e56c43769f1258d74696214f74b01ca"
+  },
+  {
+    "n": 19,
+    "roman": "XIX",
+    "paragraphs": 17,
+    "characters": 13409,
+    "sha256": "19b54319858a87abc6d54eb7811f4941e2531ce67ac4b5bb79c3fa7dd2b96be1"
+  },
+  {
+    "n": 20,
+    "roman": "XX",
+    "paragraphs": 36,
+    "characters": 23471,
+    "sha256": "6e1ebc92255b5981e1f8743982701fbaa9f627115be3564e2d7c13c37e8ccc18"
+  },
+  {
+    "n": 21,
+    "roman": "XXI",
+    "paragraphs": 55,
+    "characters": 31359,
+    "sha256": "6ee03a2ff2c22a783c7c6b4fae8b5b4d05dd4e54c4daab85ba4612541b439895"
+  },
+  {
+    "n": 22,
+    "roman": "XXII",
+    "paragraphs": 99,
+    "characters": 38146,
+    "sha256": "1f4c8907fd34a554974d7e138d3ec99e1698664e9b531d1195171acd7e40eda0"
+  },
+  {
+    "n": 23,
+    "roman": "XXIII",
+    "paragraphs": 30,
+    "characters": 20735,
+    "sha256": "defb8c4260b89e5bec984c7db4b5da9c0b7c1cec3d19465bcaa4894047c0c129"
+  },
+  {
+    "n": 24,
+    "roman": "XXIV",
+    "paragraphs": 25,
+    "characters": 9651,
+    "sha256": "b69e1342ab6b614d18fa9ba3e1ec63d868bebf7bd2ac895b32057b101076795b"
+  }
+]
