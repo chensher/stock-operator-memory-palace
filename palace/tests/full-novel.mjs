@@ -48,3 +48,16 @@ director.pilot.onNext();assert.equal(director.film,director.novel);assert.equal(
 director.novel.onNext(3);assert.equal(director.film,director.pilot);
 director.novel.onNext(25);assert.equal(director.active,false);
 console.log('PASS: engine switching, shared controls, chapter 3 continuation and final exit.');
+
+// iPad paper and book gestures in both orientations, without a keyboard.
+globalThis.matchMedia=()=>({matches:true});
+for(const [width,height] of [[768,1024],[1024,768],[820,1180],[1180,820]]){
+ globalThis.innerWidth=width;globalThis.innerHeight=height;film.open(4);advance(9);let xy=point(film.prop);film.pointerDown(...xy);advance(2);
+ for(const x of[-.23,.23])for(const z of[-.325,.325]){const corner=film.prop.localToWorld(new Vector3(x,0,z)).project(film.camera);assert(Math.abs(corner.x)<1&&Math.abs(corner.y)<1,'Held paper fits iPad orientation');}
+ film.setState('epilogue');film.keyDown({code:'KeyE',preventDefault(){}});film.keyUp({code:'KeyE'});advance(2);assert.equal(elements.get('#bookTools').hidden,false,'Book controls are visible');
+ xy=point(film.book);film.pointerDown(...xy);film.pointerMove(xy[0]-100,xy[1]);assert.equal(film.page,0,'Touch-down does not turn before gesture completes');film.pointerUp(xy[0]-100,xy[1]);assert.equal(film.page,1,'Left swipe turns forward');
+ xy=point(film.book);film.pointerDown(...xy);film.pointerUp(xy[0]+100,xy[1]);assert.equal(film.page,0,'Right swipe goes backward');
+ xy=point(film.book);film.pointerDown(...xy);film.pointerUp(xy[0],xy[1]+100);assert.equal(film.page,0,'Vertical drag does not accidentally turn');
+ elements.get('#bookLanguage').onclick();assert.equal(film.language,'en','Touch button changes notebook');elements.get('#bookPutDown').onclick();assert.equal(film.state,'epilogue');advance(.1);assert.equal(elements.get('#bookTools').hidden,true);film.close();
+}
+console.log('PASS: iPad portrait/landscape paper bounds, swipe direction, no premature turns, touch notebook switching and put-down.');

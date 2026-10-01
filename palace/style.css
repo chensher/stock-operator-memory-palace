@@ -13,3 +13,31 @@
 #filmThought,#filmFact{position:absolute;left:6vw;max-width:65vw;margin:0;pointer-events:none;text-shadow:0 2px 8px #000,0 1px 4px #000;white-space:pre-line;letter-spacing:1px}#filmThought{top:20vh;color:#f0d49e;font:24px/1.6 "Noto Serif SC",serif}#filmFact{top:27vh;color:#dfe7df;font:17px/1.6 "Noto Serif SC",serif}#sourceAnchor,#artNote{display:none}#filmCaption{line-height:1.65}#filmHint{bottom:23vh;font-size:12px;opacity:.8}@media(max-width:650px){#filmThought{top:19vh;font-size:18px;max-width:88vw}#filmFact{top:26vh;font-size:14px;max-width:88vw}#filmCaption{font-size:15px;width:88vw}#filmHint{bottom:24vh;font-size:11px}}
 
 #episodeMeta{display:none}#filmHud[data-state="sellRevelation"] #filmThought,#filmHud[data-state="sellRevelation"] #filmFact,#filmHud[data-state="ending"] #filmThought,#filmHud[data-state="ending"] #filmFact{display:none}
+
+/* Tablet gestures stay in the scene; these controls only handle walking and books. */
+html,body{overscroll-behavior:none}#world,#touchControls,#bookTools{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#bookTools{position:fixed;z-index:7;bottom:max(7vh,calc(env(safe-area-inset-bottom) + 16px));left:50%;transform:translateX(-50%);display:flex;gap:12px}
+#bookTools button{min-width:48px;min-height:48px;border:0;background:none;color:var(--paper);font-size:15px;touch-action:manipulation;text-shadow:0 2px 8px #000}
+header{padding-top:max(25px,env(safe-area-inset-top));padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+.film-tools{top:max(7vh,calc(env(safe-area-inset-top) + 8px));right:max(4vw,calc(env(safe-area-inset-right) + 8px))}
+#filmTitle{max-width:calc(90vw - 250px);top:max(8vh,calc(env(safe-area-inset-top) + 12px))}
+#filmCaption{bottom:max(6.5vh,calc(env(safe-area-inset-bottom) + 12px))}
+dialog{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+@media(any-pointer:coarse){
+ button{min-height:44px;touch-action:manipulation}.close{min-width:44px}
+ #touchControls{display:block;left:max(20px,calc(env(safe-area-inset-left) + 12px));bottom:max(96px,calc(env(safe-area-inset-bottom) + 68px))}
+ .arrows{grid-template-columns:repeat(3,52px);gap:8px}.arrows button{height:52px;padding:10px;font-size:22px;background:#10241ccc}
+ body.in-story.film-walking>#touchControls{display:block!important;z-index:7}
+ #filmHud button{min-width:52px;min-height:44px;font-size:14px;padding:10px}
+ #filmTitle{font-size:18px;letter-spacing:2px;max-width:calc(90vw - 260px)}
+ #filmCaption{font-size:20px;width:88vw;line-height:1.65}
+ #filmHint{font-size:14px;width:85vw}
+ #walkBtn,nav kbd{display:none}
+ #intro .intro-inner{padding:4px 20px}#intro h1{font-size:52px;margin:14px 0}#intro h1 span{font-size:64px}.intro-copy{margin:18px 0}
+}
+@media(any-pointer:coarse) and (max-height:600px){
+ #filmThought{top:22vh;font-size:19px}#filmFact{top:34vh;font-size:14px}
+ #filmCaption{font-size:17px}#filmHint{bottom:27vh;font-size:12px}
+ .film-letterbox{height:4vh}#filmTitle{top:max(5vh,env(safe-area-inset-top));font-size:16px}.film-tools{top:max(4vh,env(safe-area-inset-top))}
+}
+@media(max-width:650px){#filmTitle{max-width:88vw;top:max(7vh,env(safe-area-inset-top));font-size:13px}.film-tools{top:max(12vh,calc(env(safe-area-inset-top) + 36px))}#filmCaption{font-size:16px}#filmHint{font-size:12px}}

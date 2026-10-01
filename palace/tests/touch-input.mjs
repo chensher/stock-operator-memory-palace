@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {bindScenePointer} from '../src/touch-input.js';
+const listeners=new Map(),calls=[];let blocked=false;
+const surface={addEventListener(t,f){listeners.set(t,f)},setPointerCapture(id){calls.push(['capture',id])}};
+const reset=bindScenePointer(surface,{blocked:()=>blocked,down:e=>calls.push(['down',e.pointerId]),move:e=>calls.push(['move',e.pointerId]),up:e=>calls.push(['up',e.pointerId]),cancel:()=>calls.push(['cancel'])});
+const send=(type,id,pointerType='touch')=>listeners.get(type)({pointerId:id,pointerType,button:0});
+send('pointerdown',1);send('pointerdown',2);send('pointermove',2);send('pointerup',2);send('pointermove',1);send('pointercancel',1);send('pointermove',1);
+assert.deepEqual(calls,[['capture',1],['down',1],['move',1],['cancel']],'A second finger cannot steal or finish the first gesture');
+calls.length=0;send('pointerdown',3);send('lostpointercapture',3);send('pointerdown',4);reset();assert.equal(calls.filter(x=>x[0]==='cancel').length,2,'Rotation/capture loss and leaving the app both cancel cleanly');
+calls.length=0;blocked=true;send('pointerdown',5);blocked=false;send('pointerdown',6);blocked=true;send('pointerup',6);assert.deepEqual(calls,[['capture',6],['down',6],['cancel']],'Dialogs cannot leave a held gesture');
+console.log('PASS: multi-touch isolation, capture loss, app interruption and modal cancellation.');
