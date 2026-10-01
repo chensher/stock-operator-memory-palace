@@ -70,3 +70,8 @@ npm run build
 已移除答题、阅读计数与记忆提示。24 个独立插画场景 / 72 幕原创旁白 / 物件手势 / 可播放的实时镜头 / 详尽原书转述。所有事件自由进入，无评分或解锁。
 
 [在线体验](https://chensher.github.io/stock-operator-memory-palace/) · [分镜与原文定位](docs/SCENE_DESIGN.md) · [画面提示集](docs/ART_PROMPTS.md)
+
+## 连续三维样片
+
+第 3 个事件已改为直接操作订单、纸带与回报单的连续三维演出。没有剧情选择框或翻幕控件，剧情在物件动作处等待。
+[进入 1901 年 5 月 9 日样片](https://chensher.github.io/stock-operator-memory-palace/?sample=1901) · [制作范围、操作与原文依据](docs/1901_PILOT.md)
