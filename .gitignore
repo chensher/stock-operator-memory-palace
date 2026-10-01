@@ -1,0 +1,5 @@
+palace/node_modules/
+palace/.palace-server*.log
+.DS_Store
+Thumbs.db
+*.log
