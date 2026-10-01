@@ -2,7 +2,7 @@
 
 用空间、物件和文字阅读《股票作手回忆录》。一座可自由探索的旧华尔街宅邸，八间房、24件互动物品，对应原书全部章节，包含约17,500字中文原创转述与叙事。
 
-[在线体验](https://stock-operator-memory-palace.wzcbkjg8kt.chatgpt.site)（Sites版本可能需要创建者授权；下载后可独立在本地运行。）
+[在线体验 · GitHub Pages](https://chensher.github.io/stock-operator-memory-palace/)，无需下载或安装。也可以下载后独立在本地运行。
 
 ## Windows 快速打开
 
