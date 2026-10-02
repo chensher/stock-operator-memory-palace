@@ -18,7 +18,7 @@
 <div id="error" hidden><h2>这个窗口暂时无法显示三维场景</h2><p>你仍可使用地图和记忆手札阅读全部内容。也可尝试在支持 WebGL 的浏览器中打开。</p></div>
 <section id="filmHud" hidden aria-label="连续三维事件演出"><div class="film-letterbox film-top"></div><div class="film-letterbox film-bottom"></div><p id="filmTitle"></p><div class="film-tools"><button id="filmAudio">声音 开</button><button id="filmPause" aria-pressed="false">暂停</button><button id="filmExit">返回房子</button></div><p id="filmThought" aria-hidden="true"></p><p id="filmFact" aria-hidden="true"></p><p id="filmHint"></p><p id="filmCaption" role="status" aria-live="polite"></p></section>
 <div id="bookTools" hidden aria-label="账册操作"><button id="bookBack" aria-label="上一页">←</button><button id="bookForward" aria-label="下一页">→</button><button id="bookLanguage">换册</button><button id="bookPutDown">放回</button></div>
-<dialog id="recovery"><h2>让画面停一停</h2><p id="recoveryMessage"></p><div class="recovery-actions"><button id="recoverScene">重新进入</button><button id="recoverHouse">返回房子</button><button id="recoverRead">阅读这段记述</button></div></dialog>
+<dialog id="recovery"><h2>让画面停一停</h2><p id="recoveryMessage"></p><details id="recoveryDebug"><summary>查看错误详情</summary><pre id="recoveryDetails"></pre></details><div class="recovery-actions"><button id="recoverScene">重新进入</button><button id="recoverHouse">返回房子</button><button id="recoverRead">阅读这段记述</button></div></dialog>
 <section id="episode" hidden aria-label="独立事件场景">
 <div class="episode-top"><div><p id="episodeMeta" class="eyebrow"></p><h1 id="episodeTitle"></h1></div><div class="episode-tools"><button id="episodeArchive">原书转述</button><button id="episodePlay">播放镜头</button><button id="episodeClose" aria-label="返回长廊">返回长廊 ×</button></div></div>
 <div id="stepTabs" aria-label="三幕事件"></div>

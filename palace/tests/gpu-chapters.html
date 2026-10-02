@@ -1,0 +1,45 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>第二、三章实际图形渲染验证</title>
+<style>body{background:#102121;color:#fff;font:16px sans-serif}#world{width:1024px;height:768px}#results{white-space:pre-wrap}#filmHud,#bookTools,#sceneFade,#episode{display:none}</style>
+<pre id="results">正在运行实际 WebGL 验证（演出时间加速，不代表真机测试）…</pre>
+<canvas id="world"></canvas><div id="episode"></div><div id="sceneFade"></div>
+<div id="filmHud"><span id="filmTitle"></span><span id="filmCaption"></span><span id="filmHint"></span><span id="filmThought"></span><span id="filmFact"></span><button id="filmExit"></button><button id="filmPause"></button><button id="filmAudio"></button></div>
+<div id="bookTools"><button id="bookBack"></button><button id="bookForward"></button><button id="bookLanguage"></button><button id="bookPutDown"></button></div>
+<script type="module">
+import * as THREE from 'three';
+import {StoryDirector} from '../src/story-engine.js';
+import {FILM_DURATIONS} from '../src/ticker-film.js';
+const result=document.querySelector('#results');
+const renderer=new THREE.WebGLRenderer({canvas:document.querySelector('#world'),antialias:false});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);
+renderer.debug.onShaderError=()=>{throw new Error('Shader compilation failed')};
+const director=new StoryDirector(renderer,{onClose(){}});director.pilot.sounds=director.novel.sounds=false;
+let frames=0;
+const check=(condition,message)=>{if(!condition)throw new Error(message)};
+async function advance(seconds){for(let i=0;i<Math.ceil(seconds*4);i++){director.update(.25);frames++;if(frames%12===0)await new Promise(requestAnimationFrame);check(!renderer.getContext().isContextLost(),'Graphics context lost');}}
+function point(obj){const film=director.film;film.scene.updateMatrixWorld(true);const candidates=[new THREE.Box3().setFromObject(obj).getCenter(new THREE.Vector3())];obj.traverse(o=>{if(o.isMesh)candidates.push(o.getWorldPosition(new THREE.Vector3()))});for(const candidate of candidates){const p=candidate.project(film.camera),xy=[(p.x+1)*innerWidth/2,(1-p.y)*innerHeight/2];if(film.hit(...xy)===obj.userData.id)return xy;}throw new Error('No actual raycast target: '+obj.userData.id);}
+const report=message=>{result.textContent+='\n'+message};
+try{
+ director.open(2);const film=director.film;
+ for(let phase=0;phase<3;phase++){
+  await advance(10);let xy=point(film.prop);film.pointerDown(...xy);
+  if(film.state==='holding'&&film.work.phases[phase].mode==='dispatch'){await advance(2);xy=point(film.slot);film.pointerUp(...xy);}
+  else if(film.state!=='perform'){film.pointerMove(xy[0]+innerWidth*.6,xy[1]+innerHeight*.6);film.pointerUp(xy[0]+innerWidth*.6,xy[1]+innerHeight*.6);}
+  check(film.state==='perform','Chapter 2 phase '+phase+' did not start');
+  let guard=0;while(film.state==='perform'){await advance(.5);check(++guard<1200,'Chapter 2 stalled');}
+  report('PASS 第二章段落 '+(phase+1)+'：实际物件命中、动作、完整演出。');
+  if(phase<2)await advance(2);
+ }
+ film.setState('book');film.pick(film.book);film.showBook(0);await advance(2);film.showBook(1);await advance(1);director.close();
+ check(renderer.info.memory.geometries===0&&renderer.info.memory.textures===0,'Chapter 2 resources retained');
+ director.open(3);const ticker=director.film;
+ await advance(FILM_DURATIONS.entrance+1);ticker.pointerDown(...point(ticker.sellCard));check(ticker.state==='holdingSell','Sell pickup');await advance(2);ticker.pointerUp(...point(ticker.slot));check(ticker.state==='dispatch','Sell delivery');await advance(FILM_DURATIONS.dispatch+1);
+ let xy=point(ticker.grip);ticker.pointerDown(...xy);ticker.pointerMove(xy[0],xy[1]+innerHeight);ticker.pointerUp(xy[0],xy[1]+innerHeight);check(ticker.state==='falling','Tape pull');await advance(FILM_DURATIONS.falling+1);
+ xy=point(ticker.receipt);ticker.pointerDown(...xy);await advance(2);ticker.pointerMove(xy[0]+innerWidth,xy[1]);ticker.pointerUp(xy[0]+innerWidth,xy[1]);check(ticker.state==='sellRevelation','Sell receipt flip');await advance(FILM_DURATIONS.sellRevelation+1);
+ ticker.pointerDown(...point(ticker.buyCard));await advance(2);ticker.pointerUp(...point(ticker.slot));check(ticker.state==='buyDispatch','Buy delivery');await advance(FILM_DURATIONS.buyDispatch+FILM_DURATIONS.recovery+2);
+ xy=point(ticker.receipt2);ticker.pointerDown(...xy);await advance(2);ticker.pointerMove(xy[0]+innerWidth,xy[1]);ticker.pointerUp(xy[0]+innerWidth,xy[1]);check(ticker.state==='ending','Buy receipt flip');await advance(FILM_DURATIONS.ending+1);check(ticker.state==='epilogue','Chapter 3 ending');
+ ticker.pointerDown(...point(ticker.book));await advance(2);ticker.showBook(2);await advance(1);director.close();
+ check(renderer.info.memory.geometries===0&&renderer.info.memory.textures===0,'Chapter 3 resources retained');
+ for(const n of [2,3,2,3]){director.open(n);await advance(10);director.close();check(renderer.info.memory.geometries===0&&renderer.info.memory.textures===0,'Repeated entry retains GPU storage');}
+ report('PASS 第三章：卖单、递送、纸带、两张回报翻面、买单、结尾与账册。');report('PASS 第二、三章交替重进，图形资源回到基线。');
+ result.dataset.result='pass';report('PASS '+frames+' 次实际渲染；触屏模式='+String(matchMedia('(any-pointer: coarse)').matches));
+}catch(error){director.close();result.dataset.result='fail';report('FAIL '+error.stack);console.error(error);}
+</script></html>

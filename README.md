@@ -77,3 +77,7 @@ npm run build
 
 第3段保留直接操作订单、纸带与回报单的连续三维演出。
 [进入 1901 年 5 月 9 日样片](https://chensher.github.io/stock-operator-memory-palace/?sample=1901) · [制作范围、操作与原文依据](docs/1901_PILOT.md)
+
+## 改编其他书籍
+
+[book-memory-palace skill](skills/book-memory-palace/SKILL.md) 记录本项目确认过的创作要求：保留原文信息量、独立子事件、实际物件交互、连续三维演出、戏内不强调出处、取消记忆游戏，以及验证与交付方法。制作新书时先读取它，按新书内容安排空间和事件。
