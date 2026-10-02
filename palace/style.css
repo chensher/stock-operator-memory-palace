@@ -41,3 +41,5 @@ dialog{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
  .film-letterbox{height:4vh}#filmTitle{top:max(5vh,env(safe-area-inset-top));font-size:16px}.film-tools{top:max(4vh,env(safe-area-inset-top))}
 }
 @media(max-width:650px){#filmTitle{max-width:88vw;top:max(7vh,env(safe-area-inset-top));font-size:13px}.film-tools{top:max(12vh,calc(env(safe-area-inset-top) + 36px))}#filmCaption{font-size:16px}#filmHint{font-size:12px}}
+.recovery-actions{display:flex;flex-wrap:wrap;gap:12px}#recovery p{line-height:1.9}#filmHud[data-state="loading"]{background:#0b1819}#filmHud[data-state="loading"] #filmCaption{bottom:45vh}#filmHud[data-quality="light"] .film-letterbox{background:#071310}
+#sceneFade{position:fixed;inset:0;z-index:5;pointer-events:none;background:#071310;opacity:0;will-change:opacity}

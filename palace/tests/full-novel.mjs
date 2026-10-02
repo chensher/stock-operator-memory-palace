@@ -61,3 +61,5 @@ for(const [width,height] of [[768,1024],[1024,768],[820,1180],[1180,820]]){
  elements.get('#bookLanguage').onclick();assert.equal(film.language,'en','Touch button changes notebook');elements.get('#bookPutDown').onclick();assert.equal(film.state,'epilogue');advance(.1);assert.equal(elements.get('#bookTools').hidden,true);film.close();
 }
 console.log('PASS: iPad portrait/landscape paper bounds, swipe direction, no premature turns, touch notebook switching and put-down.');
+
+const originalBuild=director.novel.build;director.novel.build=()=>{throw Error('Simulated scene construction failure')};assert.throws(()=>director.open(1),/Simulated/);assert.equal(director.active,false,'Failed entry rolls back the director');assert.equal(director.novel.active,false,'Failed entry cleans its partial film');director.novel.build=originalBuild;director.open(1);assert(director.active,'Entry works again after a failed construction');director.close();console.log('PASS: construction failure releases the director and permits re-entry.');
